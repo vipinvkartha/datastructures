@@ -136,15 +136,41 @@ int main()
             cout<<"Enter data\n";
             cin>>data;
             insert_front(&head,data);
+            break;
             case2:
             cout<<"Enter data\n";
             cin>>data;
             insert_back(&head,data);
+            break;
             case3:
             cout<<"Enter data\n";
             cin>>data;
             insert_after(head->next,data);
+            break;
+            case 4:
+            delete_first(&head);
+            break;
+            case 5:
+            delete_last(&head);
+            break;
+            case 6:
+            delete_after(head->next);
+            break;
+            case 7:
+            cout<<"Enter key\n";
+            cin>>data;
+            delete_key(&head,data);
+            break;
+            case 8:
+            display(head);
+            break;
+            case 9:
+            return;
+            default:
+            cout<<"Invalid choice\n";
         }
         
     }
+    while(1);
+    getchar();
 }

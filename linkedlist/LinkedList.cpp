@@ -1,6 +1,6 @@
 #include <iostream>
 
-usign namespace std;
+using namespace std;
 
 typedef struct Node
 {
@@ -26,7 +26,7 @@ void insert_back(node **head, int val)
         return;
     }
     node *temp = *head;
-    while (NULL != temp-next)
+    while (NULL != temp->next)
     {
         temp = temp->next;
     }
@@ -63,17 +63,19 @@ void delete_last(node **head)
         cout<<"Linked List is empty\n";
         return;
     }
-    node *temp = *head;
+    node *temp = *head,*prev = NULL;
     while(NULL != temp->next)
     {
+        prev = temp;
         temp = temp->next;
     }
+    prev->next = NULL;
     delete temp;
     temp = NULL;
 }
 void delete_after(node *prev_node)
 {
-    if((NULL == prev_node) || (NULL != prev_node-next))
+    if((NULL == prev_node) || (NULL == prev_node->next))
     {
         cout<<"previous node cannot be NULL\n";
         return;
@@ -125,24 +127,24 @@ int main()
     node *head = NULL;
     int ch , data;
     cout<<"1.Insert front\n2.Insert back\n3.Insert After\n4.Delete Front\n5.DeleteBack\n6.DeleteAfter\n7.Delete Key\n";
-    cout<<"8.Display\n9.Exit\n"
+    cout<<"8.Display\n9.Exit\n";
     do
     {
         cout<<"Enter choice\n";
         cin>>ch;
         switch(ch)
         {
-            case1:
+            case 1:
             cout<<"Enter data\n";
             cin>>data;
             insert_front(&head,data);
             break;
-            case2:
+            case 2:
             cout<<"Enter data\n";
             cin>>data;
             insert_back(&head,data);
             break;
-            case3:
+            case 3:
             cout<<"Enter data\n";
             cin>>data;
             insert_after(head->next,data);
@@ -165,7 +167,7 @@ int main()
             display(head);
             break;
             case 9:
-            return;
+            return 0;
             default:
             cout<<"Invalid choice\n";
         }
@@ -173,4 +175,5 @@ int main()
     }
     while(1);
     getchar();
+    return 0;
 }

@@ -168,6 +168,31 @@ void swap(node **head,int x,int y)
     currY->next = temp;
     
 }
+int find_nth(node *head,int n)
+{
+    node *temp = head;
+    int count = 0;
+    while(temp != NULL)
+    {
+        count++;
+        if(count == n)
+            return temp->data;
+        temp = temp->next;
+    }
+    return NULL;
+}
+int middle(node *head)
+{
+    node *slow = head,*fast = head;
+    if(NULL == head)
+    return NULL;
+    while((fast != NULL) && (fast->next != NULL))
+    {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    return slow->data;
+}
 int main()
 {
     node *head = NULL;

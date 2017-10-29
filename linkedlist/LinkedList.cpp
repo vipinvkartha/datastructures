@@ -122,6 +122,23 @@ void display(node *head)
         temp = temp->next;
     }
 }
+int getcount(node *head)
+{
+    if (NULL == head)
+        return 0;
+    else
+    {
+        return (1 + getcount(head->next));
+    }
+}
+bool search(node *head,int key)
+{
+    if(NULL == head)
+    return false;
+    if(head->data  == key)
+    return true;
+    return search(head->next,key);
+}
 int main()
 {
     node *head = NULL;

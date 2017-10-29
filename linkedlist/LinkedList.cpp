@@ -139,6 +139,35 @@ bool search(node *head,int key)
     return true;
     return search(head->next,key);
 }
+void swap(node **head,int x,int y)
+{
+    if(x == y)
+    return;
+    node *currX= NULL, *prevX=NULL,*currY=NULL,*prevY=NULL;
+    currX = *head, currY = *head;
+    while((currX != NULL) && (currX->data!=x))
+    {
+        prevX = currX;
+        currX = currX->next;
+    }
+    while((currY != NULL) && (currY->data!=x))
+    {
+        prevY = currY;
+        currY = currY->next;
+    }
+    if(prevX!=NULL)
+        prevX->next = currY;
+    else
+        *head = currY;
+    if(prevY!=NULL)
+        prevY->next = currX;
+    else
+        *head = currX;
+    node *temp = currX->next;
+    currX->next = currY->next;;
+    currY->next = temp;
+    
+}
 int main()
 {
     node *head = NULL;

@@ -129,7 +129,22 @@ int main()
     do
     {
         cout<<"Enter choice\n";
-        cin>>choice;
+        cin>>ch;
+        switch(ch)
+        {
+            case1:
+            cout<<"Enter data\n";
+            cin>>data;
+            insert_front(&head,data);
+            case2:
+            cout<<"Enter data\n";
+            cin>>data;
+            insert_back(&head,data);
+            case3:
+            cout<<"Enter data\n";
+            cin>>data;
+            insert_after(head->next,data);
+        }
         
     }
 }

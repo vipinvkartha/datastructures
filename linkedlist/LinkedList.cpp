@@ -193,6 +193,21 @@ int middle(node *head)
     }
     return slow->data;
 }
+int nth_from_last(node *head,int n)
+{
+    int len = getcount(head),count = 0;
+    if(n > len)
+    return NULL;
+    int lim = len - n + 1;
+    node *temp = head;
+    while(count == lim)
+    {
+        temp = temp->next;
+        count++;
+    }
+    return temp->data;
+    
+}
 int main()
 {
     node *head = NULL;

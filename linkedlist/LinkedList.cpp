@@ -208,6 +208,19 @@ int nth_from_last(node *head,int n)
     return temp->data;
     
 }
+void delete_list(node **head)
+{
+    node *temp = *head;
+    node *next = NULL;
+    while(NULL != temp)
+    {
+        next = temp->next;
+        delete temp;
+        temp = next;
+
+    }
+    *head = NULL;
+}
 int main()
 {
     node *head = NULL;

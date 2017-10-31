@@ -221,6 +221,30 @@ void delete_list(node **head)
     }
     *head = NULL;
 }
+void reverse(node **head)
+{
+    node *prev = NULL , *curr = *head , *next = NULL;
+    while(curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    *head = prev;
+}
+bool detect_loop(node *head)
+{
+    node *slow_p = head , *fast_p = head;
+    while ((slow_p) && (fast_p) && (fast_p->next))
+    {
+        slow_p = slow_p->next;
+        fast_p = fast_p->next->next;
+        if(slow_p == fast_p)
+        return true;
+    }
+    return false;
+}
 int main()
 {
     node *head = NULL;

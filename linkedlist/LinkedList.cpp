@@ -245,6 +245,25 @@ bool detect_loop(node *head)
     }
     return false;
 }
+node *SortedMerge(node *a, node *b)
+{
+    node *temp = NULL;
+    if(NULL == a)
+    return b;
+    if ( NULL == b)
+    return a;
+    if(a->data <= b->data)
+    {
+        temp = a;
+        temp->next = SortedMerge(a->next,b);
+    }
+    else
+    {
+        temp = b;
+        temp->next = SortedMerge(a,b->next);
+    }
+    return temp;
+}
 int main()
 {
     node *head = NULL;

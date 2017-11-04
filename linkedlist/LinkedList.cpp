@@ -264,6 +264,21 @@ node *SortedMerge(node *a, node *b)
     }
     return temp;
 }
+void swap(int &a,int &b)
+{
+    int temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+void pairSwap(node *head)
+{
+    if((head != NULL) && (head->next != NULL))
+    {
+        swap(head->data,head->next->data);
+        pairSwap(head->next->next);
+    }
+}
 int main()
 {
     node *head = NULL;
